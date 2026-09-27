@@ -3,100 +3,545 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>To My Beloved ❤️</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,400&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Birthday Menna - Magical Edition</title>
+    <!-- خطوط جوجل المتناسقة -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Great+Vibes&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         html, body {
-            width: 100vw; height: 100vh;
+            width: 100vw;
+            height: 100vh;
             min-height: -webkit-fill-available;
             overflow: hidden;
-            background: radial-gradient(circle at center, #2e1d2a 0%, #1f141d 50%, #120b10 100%);
+            background: radial-gradient(circle at center, #23161f 0%, #171015 50%, #0d090c 100%);
             font-family: 'Cairo', sans-serif;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            position: fixed; padding: 20px; transition: opacity 1.5s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            padding: 15px 10px;
         }
+
+        /* --- زخارف رومانسية رايقة تملى الخلفية بشياكة --- */
         .romantic-decorations {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            z-index: 1; pointer-events: none; overflow: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+            overflow: hidden;
         }
+
         .rom-item {
-            position: absolute; font-size: 22px; opacity: 0.4;
+            position: absolute;
+            font-size: 22px;
+            opacity: 0.35;
             animation: floatRom 6s ease-in-out infinite alternate;
+            filter: drop-shadow(0 0 10px rgba(244, 114, 182, 0.3));
         }
-        .rom-1 { top: 12%; left: 10%; }
-        .rom-2 { top: 18%; right: 12%; animation-delay: 1.5s; font-size: 25px; }
+
+        .rom-1 { top: 8%; left: 10%; animation-delay: 0s; }
+        .rom-2 { top: 15%; right: 12%; animation-delay: 1.5s; font-size: 26px; }
         .rom-3 { bottom: 15%; left: 12%; animation-delay: 3s; font-size: 24px; }
-        .rom-4 { bottom: 12%; right: 15%; animation-delay: 4.5s; }
+        .rom-4 { bottom: 10%; right: 15%; animation-delay: 4.5s; }
+        .rom-5 { top: 45%; left: 5%; animation-delay: 2s; font-size: 18px; }
+        .rom-6 { top: 50%; right: 5%; animation-delay: 3.5s; font-size: 18px; }
+
         @keyframes floatRom {
             0% { transform: translateY(0px) scale(0.95); opacity: 0.25; }
             100% { transform: translateY(-12px) scale(1.05); opacity: 0.55; }
         }
-        canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2; pointer-events: none; }
-        .top-header-title {
-            position: absolute; top: 35px; z-index: 10;
-            font-family: 'Cinzel', serif; font-size: clamp(1.3rem, 4vw, 1.7rem);
-            color: #ffb6c1; letter-spacing: 4px; font-weight: 700;
-            text-shadow: 0 0 15px rgba(255, 182, 193, 0.6);
-            opacity: 0; animation: fadeInHeader 1.5s ease forwards 0.5s;
+
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
         }
-        @keyframes fadeInHeader { to { opacity: 1; } }
-        .romantic-container {
-            position: relative; z-index: 10; text-align: center; max-width: 650px;
-            padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 30px;
+
+        /* --- شاشة الـ Intro السينمائية الروماّنسية الرايقة --- */
+        #introScreen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 30;
+            background: radial-gradient(circle at center, #261720 0%, #150d12 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            transition: opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .romantic-text {
-            font-family: 'Playfair Display', serif; font-style: italic;
-            font-size: clamp(1.6rem, 4.2vw, 2.6rem); color: #ffb6c1;
-            line-height: 1.6; letter-spacing: 0.5px;
-            text-shadow: 0 0 15px rgba(255, 182, 193, 0.6);
-            min-height: 180px; display: flex; align-items: center; justify-content: center;
+
+        .intro-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.5rem, 5vw, 2.6rem);
+            font-weight: 700;
+            color: #f472b6;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-shadow: 0 0 20px rgba(244, 114, 182, 0.3);
+            margin-bottom: 20px;
+            min-height: 1.5em;
         }
+
         .surprise-box-wrapper {
-            position: relative; padding: 2.5px; border-radius: 26px; overflow: hidden;
-            opacity: 0; transform: translateY(20px) scale(0.95);
+            position: relative;
+            padding: 2.5px;
+            border-radius: 24px;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(20px) scale(0.95);
             transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-            width: 85%; max-width: 360px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            width: 85%;
+            max-width: 340px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
         }
-        .surprise-box-wrapper.show { opacity: 1; transform: translateY(0) scale(1); }
+
+        .surprise-box-wrapper.show {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
         .surprise-box-wrapper::before {
-            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-            background: conic-gradient(from 0deg, transparent, rgba(255, 182, 193, 0.5), #ff758c, #ff7eb3, transparent 65%);
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(244, 114, 182, 0.4), #ec4899, #f472b6, transparent 65%);
             animation: rotateGlow 4.5s linear infinite;
         }
-        @keyframes rotateGlow { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        @keyframes rotateGlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
         .surprise-box-content {
-            position: relative; background: rgba(40, 25, 36, 0.9);
-            backdrop-filter: blur(20px); padding: 18px 26px; border-radius: 24px; z-index: 2; text-align: center;
+            position: relative;
+            background: rgba(30, 20, 26, 0.85);
+            backdrop-filter: blur(20px);
+            padding: 18px 24px;
+            border-radius: 22px;
+            z-index: 2;
+            text-align: center;
         }
+
         .surprise-box-content p {
-            font-family: 'Cinzel', serif; font-size: clamp(1rem, 3.5vw, 1.15rem);
-            color: #fff1f2; font-weight: 700; letter-spacing: 2px;
-            text-shadow: 0 0 12px rgba(255, 182, 193, 0.5);
+            font-size: clamp(1rem, 3.5vw, 1.2rem);
+            color: #fbcfe8;
+            font-weight: 700;
+            letter-spacing: 1.5px;
         }
-        .fade-out { opacity: 0 !important; }
+
+        /* --- الصفحة الرئيسية وقسم الباسورد --- */
+        .main-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 10;
+        }
+
+        .main-container.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .top-header {
+            width: 100%;
+            text-align: center;
+            z-index: 10;
+            transition: opacity 0.5s ease;
+        }
+
+        .top-header h2 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.6rem, 5.5vw, 2.5rem);
+            font-weight: 700;
+            color: #f472b6;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-shadow: 0 0 15px rgba(244, 114, 182, 0.3);
+            margin-bottom: 2px;
+        }
+
+        .top-header span {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(1.3rem, 4vw, 2rem);
+            color: #fbcfe8;
+            text-shadow: 0 0 10px rgba(251, 207, 232, 0.2);
+            display: block;
+        }
+
+        .name-box-wrapper {
+            position: relative;
+            padding: 3px;
+            border-radius: 24px;
+            overflow: hidden;
+            width: 80%;
+            max-width: 300px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            animation: floatBox 3.5s ease-in-out infinite alternate;
+            z-index: 10;
+            transition: opacity 0.5s ease;
+        }
+
+        @keyframes floatBox {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-5px); }
+        }
+
+        .name-box-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(244, 114, 182, 0.4), #ec4899, #f472b6, transparent 65%);
+            animation: rotateGlow 4.5s linear infinite;
+        }
+
+        .name-box-content {
+            position: relative;
+            background: rgba(30, 20, 26, 0.85);
+            backdrop-filter: blur(20px);
+            padding: 14px 20px;
+            border-radius: 22px;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .name-box-content h3 {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(2.2rem, 7vw, 3rem);
+            color: #f472b6;
+            text-shadow: 0 0 10px rgba(244, 114, 182, 0.3);
+            letter-spacing: 2px;
+        }
+
+        .glass-card {
+            width: 90%;
+            max-width: 360px;
+            padding: 28px 22px;
+            background: rgba(25, 17, 23, 0.85);
+            backdrop-filter: blur(25px);
+            border: 1.5px solid rgba(244, 114, 182, 0.3);
+            border-radius: 28px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 
+                        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            text-align: center;
+            z-index: 10;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .card-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.25rem;
+            color: #fbcfe8;
+            margin-bottom: 16px;
+            letter-spacing: 2px;
+        }
+
+        .input-box {
+            position: relative;
+            margin-bottom: 16px;
+        }
+
+        input[type="password"] {
+            width: 100%;
+            padding: 13px 18px;
+            background: rgba(18, 11, 15, 0.9);
+            border: 1.5px solid rgba(244, 114, 182, 0.4);
+            border-radius: 40px;
+            color: #fbcfe8;
+            font-size: 1rem;
+            text-align: center;
+            outline: none;
+            transition: all 0.3s ease;
+            letter-spacing: 3px;
+        }
+
+        input[type="password"]:focus {
+            border-color: #f472b6;
+            background: rgba(30, 20, 26, 0.95);
+            box-shadow: 0 0 20px rgba(244, 114, 182, 0.25);
+        }
+
+        input::placeholder {
+            color: rgba(251, 207, 232, 0.4);
+            font-weight: 300;
+            letter-spacing: normal;
+        }
+
+        button.action-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #db2777 0%, #be185d 100%);
+            border: none;
+            color: #fff;
+            padding: 13px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(219, 39, 119, 0.3);
+            letter-spacing: 1.5px;
+        }
+
+        button.action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(219, 39, 119, 0.5);
+        }
+
+        .error-msg {
+            color: #fda4af;
+            font-size: 0.825rem;
+            margin-top: 10px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .error-msg.show {
+            opacity: 1;
+        }
+
+        /* --- اسم منة ورقم 19 في السما (فوق خالص) --- */
+        #skyNameBanner {
+            position: absolute;
+            top: 2vh;
+            width: 100%;
+            text-align: center;
+            z-index: 25;
+            opacity: 0;
+            transform: scale(0.5) translateY(-20px);
+            transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+            pointer-events: none;
+        }
+
+        #skyNameBanner.show {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+
+        #skyNameBanner h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(1.8rem, 5vw, 2.6rem);
+            background: linear-gradient(135deg, #fbcfe8 0%, #f472b6 50%, #db2777 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 25px rgba(244, 114, 182, 0.3);
+            letter-spacing: 2px;
+            animation: textGlowPulse 3s ease-in-out infinite alternate;
+            margin-bottom: 0px;
+        }
+
+        @keyframes textGlowPulse {
+            0% { filter: drop-shadow(0 0 6px rgba(244, 114, 182, 0.3)); }
+            100% { filter: drop-shadow(0 0 18px rgba(244, 114, 182, 0.6)); }
+        }
+
+        .sky-subtitle {
+            font-family: 'Cinzel', serif;
+            color: #fbcfe8;
+            font-size: clamp(0.7rem, 2vw, 0.85rem);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+            animation: softPulse 2.5s ease-in-out infinite alternate;
+            margin-top: 1px;
+            font-weight: 700;
+        }
+
+        @keyframes softPulse {
+            0% { opacity: 0.8; }
+            100% { opacity: 1; }
+        }
+
+        .age-badge-wrapper {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2px 10px;
+            background: rgba(30, 20, 26, 0.85);
+            border: 1.5px solid rgba(244, 114, 182, 0.4);
+            border-radius: 30px;
+            box-shadow: 0 0 15px rgba(244, 114, 182, 0.15);
+            margin-top: 3px;
+        }
+
+        .age-badge-wrapper span {
+            font-family: 'Cinzel', serif;
+            color: #fbcfe8;
+            font-size: clamp(0.7rem, 2vw, 0.85rem);
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        /* --- حاوية الجمل مع مساحات مريحة وسكرول تلقائي سموث --- */
+        #messagesWrapper {
+            position: absolute;
+            top: 24vh;
+            width: 92%;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 25;
+            opacity: 0;
+            transform: translateY(-10px);
+            pointer-events: none;
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            max-height: 68vh;
+            overflow-y: auto;
+            scroll-behavior: smooth;
+            padding: 8px 4px;
+            align-items: center;
+        }
+
+        #messagesWrapper::-webkit-scrollbar {
+            width: 4px;
+        }
+        #messagesWrapper::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        #messagesWrapper::-webkit-scrollbar-thumb {
+            background: rgba(244, 114, 182, 0.4);
+            border-radius: 10px;
+        }
+
+        #messagesWrapper.show {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        /* --- كارت الجمل مع مساحة داخلية مريحة وإضاءة ليد بامبي المتحركة --- */
+        .message-line-card {
+            position: relative;
+            background: rgba(25, 17, 23, 0.9);
+            backdrop-filter: blur(25px);
+            border-radius: 14px;
+            padding: 12px 16px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35), 
+                        inset 0 0 12px rgba(255, 255, 255, 0.03);
+            opacity: 0;
+            transform: translateY(-10px) scale(0.96);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            width: 100%;
+            z-index: 2;
+            overflow: hidden;
+        }
+
+        /* إطار الليد البامبي المتحرك */
+        .message-line-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent 0%, rgba(244, 114, 182, 0.2) 25%, #ec4899 50%, #f472b6 75%, transparent 100%);
+            animation: rotateLed 4s linear infinite;
+            z-index: -1;
+        }
+
+        .message-line-card::after {
+            content: '';
+            position: absolute;
+            inset: 1.5px;
+            background: rgba(22, 14, 20, 0.95);
+            border-radius: 12.5px;
+            z-index: -1;
+        }
+
+        @keyframes rotateLed {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .message-line-card.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .message-text {
+            font-family: 'Cairo', sans-serif;
+            font-weight: 700;
+            color: #fbcfe8;
+            font-size: clamp(0.82rem, 2.6vw, 1rem);
+            line-height: 1.4;
+            direction: rtl;
+        }
+
+        .eng-text {
+            font-family: 'Cinzel', serif;
+            color: #f472b6;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            direction: ltr;
+            display: inline-block;
+        }
     </style>
 </head>
 <body>
 
-    <!-- الموسيقى تعمل فوراً -->
-    <audio id="bgMusic" preload="auto" loop>
+    <!-- عناصر الصوت -->
+    <!-- الأغنية الأولى: الموسيقى الرومانسية (تبدأ من الثانية 2 وتقفل لما تخلص) -->
+    <audio id="introMusic" preload="auto">
         <source src="https://serv100.albumaty.com/2025/Albumaty.Com_mnwaat_mwsyki_rwmansyt_mnwaat.mp3" type="audio/mpeg">
     </audio>
 
-    <div class="top-header-title">My Love 💓</div>
+    <!-- الأغنية الثانية: أغنية رامي صبري (تشتغل بعد الباسورد) -->
+    <audio id="birthdaySong" preload="auto">
+        <source src="https://serv100.albumaty.com/song2022/Albumaty.Com_ramy_sbri_kl_snt.mp3" type="audio/mpeg">
+    </audio>
 
+    <!-- زخارف رومانسية رايقة تملى الخلفية -->
     <div class="romantic-decorations">
         <div class="rom-item rom-1">🌹</div>
         <div class="rom-item rom-2">💖</div>
         <div class="rom-item rom-3">✨</div>
         <div class="rom-item rom-4">🌸</div>
+        <div class="rom-item rom-5">🤍</div>
+        <div class="rom-item rom-6">🌷</div>
     </div>
 
     <canvas id="fireworksCanvas"></canvas>
 
-    <div class="romantic-container">
-        <div class="romantic-text" id="typedText"></div>
+    <!-- شاشة الـ Intro السينمائية -->
+    <div id="introScreen">
+        <div class="intro-title" id="introTitle"></div>
         <div class="surprise-box-wrapper" id="surpriseBox">
             <div class="surprise-box-content">
                 <p>Let's get to the surprise! ✨</p>
@@ -104,129 +549,334 @@
         </div>
     </div>
 
-    <script>
-        // محاولة تشغيل الصوت تلقائياً مع أول لمسة أو تحميل
-        const music = document.getElementById('bgMusic');
-        music.volume = 0.5;
-        
-        function playAudio() {
-            music.play().catch(() => {});
-        }
+    <!-- الصفحة الرئيسية وباسورد الدخول -->
+    <div class="main-container" id="mainContainer">
+        <div class="top-header" id="topHeader">
+            <h2>Birthday Menna</h2>
+            <span>Special Day For You ✨</span>
+        </div>
 
+        <div class="name-box-wrapper" id="nameBoxWrapper">
+            <div class="name-box-content">
+                <h3>Menna</h3>
+            </div>
+        </div>
+
+        <div class="glass-card" id="loginCard">
+            <div class="card-title">Enter Password</div>
+            <div class="input-box">
+                <input type="password" id="passCode" placeholder="Enter Password" autocomplete="off">
+            </div>
+            <button class="action-btn" onclick="verifyPassword()">Open Surprise</button>
+            <div id="errorText" class="error-msg">Incorrect password, try again</div>
+        </div>
+    </div>
+
+    <!-- اسم منة ورقم 19 الفخم في السما -->
+    <div id="skyNameBanner">
+        <h1>Menna</h1>
+        <div class="sky-subtitle">Happy Birthday To You ✨</div>
+        <div class="age-badge-wrapper">
+            <span>✨ 19th Birthday ✨</span>
+        </div>
+    </div>
+
+    <!-- حاوية الجمل -->
+    <div id="messagesWrapper"></div>
+
+    <script>
+        // تشغيل الموسيقى الرومانسية الأولى أول ما الموقع يفتح من الثانية 2 وتتقفل لما تخلص
         window.addEventListener('DOMContentLoaded', () => {
-            playAudio();
-            // تفعيل التشغيل مع أي نقرة تفاعلية في حال حظر المتصفح التشغيل التلقائي البحت
-            document.body.addEventListener('click', playAudio, { once: true });
+            const introMusic = document.getElementById('introMusic');
+            introMusic.currentTime = 2;
+            introMusic.play().catch(e => {
+                console.log("Auto-play prevented by browser policy:", e);
+                // محاولة التشغيل مع أي تفاعل في حال منع المتصفح التشغيل التلقائي
+                document.body.addEventListener('click', () => {
+                    if (introMusic.paused) {
+                        introMusic.currentTime = 2;
+                        introMusic.play().catch(err => console.log(err));
+                    }
+                }, { once: true });
+            });
+
+            // التأكد من إيقافها تماماً فور انتهائها
+            introMusic.addEventListener('ended', () => {
+                introMusic.pause();
+                introMusic.currentTime = 0;
+            });
         });
 
-        const textString = "To my beloved, the light of my eyes, the beat of my heart, and the soul of my heart...";
-        let index = 0;
+        // تأثير الكتابة في الـ Intro
+        const textToType = "HAPPY BIRTHDAY MENNA";
+        let charIndex = 0;
 
-        function typeWriter() {
-            if (index < textString.length) {
-                document.getElementById('typedText').innerHTML += textString.charAt(index);
-                index++;
-                setTimeout(typeWriter, 100);
+        function typeWriterIntro() {
+            if (charIndex < textToType.length) {
+                document.getElementById('introTitle').innerHTML += textToType.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeWriterIntro, 70);
             } else {
                 setTimeout(() => {
                     document.getElementById('surpriseBox').classList.add('show');
-                }, 600);
+                }, 400);
 
                 setTimeout(() => {
-                    document.body.classList.add('fade-out');
+                    const intro = document.getElementById('introScreen');
+                    intro.style.opacity = '0';
                     setTimeout(() => {
-                        window.location.href = "page2.html"; 
-                    }, 1500);
-                }, 4000);
+                        intro.style.display = 'none';
+                        document.getElementById('mainContainer').classList.add('active');
+                    }, 1400);
+                }, 4200);
             }
         }
 
-        window.onload = () => { setTimeout(typeWriter, 800); };
+        window.onload = () => {
+            setTimeout(typeWriterIntro, 500);
+        };
 
-        // الألعاب النارية
+        // --- محرك الألعاب النارية برومانسية ---
         const canvas = document.getElementById('fireworksCanvas');
         const ctx = canvas.getContext('2d');
-        function initCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+
+        function initCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
         initCanvas();
         window.addEventListener('resize', initCanvas);
 
-        const fireworks = [];
+        let fireworksEnabled = false;
         const particles = [];
+        const fireworks = [];
 
         class Firework {
             constructor(x, y, targetX, targetY) {
-                this.x = x; this.y = y; this.targetX = targetX; this.targetY = targetY;
-                this.coordinates = []; this.angle = Math.atan2(targetY - y, targetX - x);
-                this.speed = 4; this.accel = 1.04;
-                this.brightness = Math.random() * 20 + 60; this.hue = Math.random() * 20 + 340;
+                this.x = x;
+                this.y = y;
+                this.targetX = targetX;
+                this.targetY = targetY;
+                this.coordinates = [];
+                this.angle = Math.atan2(targetY - y, targetX - x);
+                this.speed = 5;
+                this.accel = 1.05;
+                this.brightness = Math.random() * 20 + 55;
+                this.hue = Math.random() * 25 + 335;
             }
             update(index) {
-                this.coordinates.pop(); this.coordinates.unshift([this.x, this.y]);
+                this.coordinates.pop();
+                this.coordinates.unshift([this.x, this.y]);
                 this.speed *= this.accel;
                 let vx = Math.cos(this.angle) * this.speed;
                 let vy = Math.sin(this.angle) * this.speed;
+                
                 if (Math.hypot(this.targetX - this.x, this.targetY - this.y) < this.speed) {
                     createParticles(this.targetX, this.targetY, this.hue);
                     fireworks.splice(index, 1);
-                } else { this.x += vx; this.y += vy; }
+                } else {
+                    this.x += vx;
+                    this.y += vy;
+                }
             }
             draw() {
                 ctx.beginPath();
                 ctx.moveTo(this.coordinates[this.coordinates.length - 1][0], this.coordinates[this.coordinates.length - 1][1]);
                 ctx.lineTo(this.x, this.y);
-                ctx.strokeStyle = `hsl(${this.hue}, 90%, ${this.brightness}%)`;
+                ctx.strokeStyle = `hsl(${this.hue}, 80%, ${this.brightness}%)`;
                 ctx.stroke();
             }
         }
 
         class Particle {
             constructor(x, y, hue) {
-                this.x = x; this.y = y; this.coordinates = [];
-                for (let i = 0; i < 4; i++) { this.coordinates.push([this.x, this.y]); }
+                this.x = x;
+                this.y = y;
+                this.coordinates = [];
+                for (let i = 0; i < 5; i++) {
+                    this.coordinates.push([this.x, this.y]);
+                }
                 this.angle = Math.random() * Math.PI * 2;
-                this.speed = Math.random() * 8 + 1; this.friction = 0.95; this.gravity = 0.8;
-                this.hue = hue; this.brightness = Math.random() * 20 + 60;
-                this.alpha = 1; this.decay = Math.random() * 0.02 + 0.015;
+                this.speed = Math.random() * 10 + 2;
+                this.friction = 0.95;
+                this.gravity = 1;
+                this.hue = hue;
+                this.brightness = Math.random() * 20 + 55;
+                this.alpha = 1;
+                this.decay = Math.random() * 0.015 + 0.015;
             }
             update(index) {
-                this.coordinates.pop(); this.coordinates.unshift([this.x, this.y]);
+                this.coordinates.pop();
+                this.coordinates.unshift([this.x, this.y]);
                 this.speed *= this.friction;
                 this.x += Math.cos(this.angle) * this.speed;
                 this.y += Math.sin(this.angle) * this.speed + this.gravity;
                 this.alpha -= this.decay;
-                if (this.alpha <= this.decay) { particles.splice(index, 1); }
+                if (this.alpha <= this.decay) {
+                    particles.splice(index, 1);
+                }
             }
             draw() {
                 ctx.beginPath();
                 ctx.moveTo(this.coordinates[this.coordinates.length - 1][0], this.coordinates[this.coordinates.length - 1][1]);
                 ctx.lineTo(this.x, this.y);
-                ctx.strokeStyle = `hsla(${this.hue}, 90%, ${this.brightness}%, ${this.alpha})`;
+                ctx.strokeStyle = `hsla(${this.hue}, 80%, ${this.brightness}%, ${this.alpha})`;
                 ctx.stroke();
             }
         }
 
         function createParticles(x, y, hue) {
-            let count = 30;
-            while (count--) { particles.push(new Particle(x, y, hue)); }
+            let particleCount = 40;
+            while (particleCount--) {
+                particles.push(new Particle(x, y, hue));
+            }
         }
 
         let timer = 0;
-        function animate() {
-            requestAnimationFrame(animate);
-            ctx.fillStyle = 'rgba(31, 20, 29, 0.25)';
+        function animateFireworks() {
+            requestAnimationFrame(animateFireworks);
+            ctx.fillStyle = 'rgba(19, 12, 17, 0.25)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
+
             let i = fireworks.length;
-            while (i--) { fireworks[i].update(i); fireworks.draw(); }
+            while (i--) {
+                fireworks[i].update(i);
+                fireworks[i].draw();
+            }
+
             let j = particles.length;
-            while (j--) { particles.update(j); particles.draw(); }
-            if (timer++ % 55 === 0) {
-                let startX = canvas.width / 2; let startY = canvas.height;
-                let targetX = Math.random() * canvas.width * 0.7 + canvas.width * 0.15;
-                let targetY = Math.random() * canvas.height * 0.4;
-                fireworks.push(new Firework(startX, startY, targetX, targetY));
+            while (j--) {
+                particles[j].update(j);
+                particles[j].draw();
+            }
+
+            if (fireworksEnabled) {
+                if (timer++ % 35 === 0) {
+                    let startX = canvas.width / 2;
+                    let startY = canvas.height;
+                    let targetX = Math.random() * canvas.width * 0.8 + canvas.width * 0.1;
+                    let targetY = Math.random() * canvas.height * 0.45;
+                    fireworks.push(new Firework(startX, startY, targetX, targetY));
+                }
             }
         }
-        animate();
+        animateFireworks();
+
+        // الجمل بالترتيب المطلوب (من حمو قبل الأخيرة، و M هي الأخيرة)
+        const messageLines = [
+            "<span class='eng-text'>Happy Birthday Menna ❤️ 🎂</span>",
+            "عقبال مليون سنه وانتي كدا كدا احسن كوتش اصلا 😉👌🏻",
+            "كل سنه وانتي بخير وبصحه وافضل من اي وقت عدي 😊",
+            "كل سنه وانتي من اطيب الناس واحن الناس الي عرفتها☺️",
+            "كل سنة وانتي طيبة وبخير يا منه ❤️",
+            "كل سنه وانتي طيبه يا احلي من تم 1️⃣9️⃣",
+            "ربنا يديمك ف حياتي يا نونا ❤️",
+            "<span class='eng-text'>Menna 1️⃣9️⃣</span>",
+            "اتمني الحاجه الصغيره دي تفرحك ❤️😂",
+            "من حمو لــــ نــونــــا🫶🏻🫶🏻🤙🏻🤙🏻",
+            "M"
+        ];
+
+        let msgIndex = 0;
+
+        function displayNextMessageLine() {
+            if (msgIndex >= messageLines.length) return;
+
+            const wrapper = document.getElementById('messagesWrapper');
+            
+            const card = document.createElement('div');
+            card.className = 'message-line-card';
+            
+            const textDiv = document.createElement('div');
+            textDiv.className = 'message-text';
+            card.appendChild(textDiv);
+            wrapper.appendChild(card);
+
+            setTimeout(() => {
+                card.classList.add('visible');
+                wrapper.scrollTo({
+                    top: wrapper.scrollHeight,
+                    behavior: 'smooth'
+                });
+            }, 50);
+
+            const fullHtml = messageLines[msgIndex];
+            
+            if (fullHtml.includes('eng-text')) {
+                let htmlChars = fullHtml;
+                let charCounter = 0;
+                
+                function typeHtml() {
+                    if (charCounter <= htmlChars.length) {
+                        textDiv.innerHTML = htmlChars.substring(0, charCounter);
+                        charCounter += 2;
+                        wrapper.scrollTop = wrapper.scrollHeight;
+                        setTimeout(typeHtml, 30);
+                    } else {
+                        textDiv.innerHTML = htmlChars;
+                        msgIndex++;
+                        setTimeout(displayNextMessageLine, 700);
+                    }
+                }
+                setTimeout(typeHtml, 150);
+
+            } else {
+                let charPos = 0;
+                function typeArabic() {
+                    if (charPos <= fullHtml.length) {
+                        textDiv.innerHTML = fullHtml.substring(0, charPos);
+                        charPos++;
+                        wrapper.scrollTop = wrapper.scrollHeight;
+                        setTimeout(typeArabic, 35);
+                    } else {
+                        msgIndex++;
+                        setTimeout(displayNextMessageLine, 700);
+                    }
+                }
+                setTimeout(typeArabic, 150);
+            }
+        }
+
+        // التحقق من الباسورد (2492007)
+        function verifyPassword() {
+            const pass = document.getElementById('passCode').value;
+            const errorText = document.getElementById('errorText');
+            
+            if (pass === "2492007") {
+                fireworksEnabled = true;
+
+                // 1. إيقاف الأغنية الأولى تماماً فور كتابة الباسورد والضغط
+                const introMusic = document.getElementById('introMusic');
+                introMusic.pause();
+                introMusic.currentTime = 0;
+
+                // 2. تشغيل الأغنية الثانية (رامي صبري) من الدقيقة 1:43 وتوقفها عند نهايتها تلقائياً
+                const song = document.getElementById('birthdaySong');
+                song.currentTime = 103; 
+                song.play().catch(e => console.log("Audio play prevented:", e));
+
+                const loginCard = document.getElementById('loginCard');
+                loginCard.style.transform = "scale(0.8)";
+                loginCard.style.opacity = "0";
+                loginCard.style.pointerEvents.none;
+                
+                document.getElementById('topHeader').style.opacity = "0";
+                document.getElementById('nameBoxWrapper').style.opacity = "0";
+
+                setTimeout(() => {
+                    document.getElementById('skyNameBanner').classList.add('show');
+                    document.getElementById('messagesWrapper').classList.add('show');
+                    displayNextMessageLine();
+                }, 500);
+
+            } else {
+                errorText.classList.add('show');
+                const card = document.getElementById('loginCard');
+                card.style.transform = "translateX(10px)";
+                setTimeout(() => card.style.transform = "translateX(-10px)", 90);
+                setTimeout(() => card.style.transform = "translateX(0)", 180);
+            }
+        }
     </script>
 </body>
 </html>
