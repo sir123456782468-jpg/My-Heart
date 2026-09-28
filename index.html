@@ -268,7 +268,7 @@
             padding: 16px 20px;
             text-align: center;
             box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-            display: none; /* مخفية مبدئياً حتى يتم كتابتها */
+            display: none;
         }
         .love-card.active-card {
             display: block;
@@ -495,8 +495,8 @@
 
         // تشغيل العداد وكتابة الرسائل حرف بحرف
         function startSurpriseScene() {
-            // العداد الدقيق (من 15 مارس 2024 - مع تعديل فروق التوقيت لضمان صحة الأيام)
-            const startDate = new Date(2024, 2, 15, 0, 0, 0); // الشهر 2 يعني مارس في جافاسكريبت
+            // تاريخ البداية (15 مارس 2024 - يمكنك تعديله لو التاريخ مختلف)
+            const startDate = new Date(2024, 2, 15, 0, 0, 0);
             
             function updateTimer() {
                 const now = new Date();
@@ -516,7 +516,7 @@
             setInterval(updateTimer, 1000);
             updateTimer();
 
-            // قائمة الـ 15 رسالة رومانسية
+            // الـ 15 رسالة رومانسية
             const messages = [
                 "كل ثانية بتمر وأنا معاكي بحس كأن الدنيا لسه مبتدأة، وحبك جوه قلبي بيزيد ويكبر مفيش حدود.",
                 "يا أجمل هدية ربنا رزقني بيها، ضحكتك دي هي النور اللي بينور لي كل طريق مظلم في حياتي.",
@@ -544,7 +544,7 @@
                 if (currentMessageIndex < messages.length) {
                     const card = cards[currentMessageIndex];
                     const textEl = textElements[currentMessageIndex];
-                    card.classList.add('active-card'); // إظهار الكارت
+                    card.classList.add('active-card');
                     
                     let charIndex = 0;
                     const currentText = messages[currentMessageIndex];
@@ -553,13 +553,12 @@
                         if (charIndex < currentText.length) {
                             textEl.textContent += currentText.charAt(charIndex);
                             charIndex++;
-                            // سكرول تلقائي مستمر مع ظهور الحروف لأسفل الشاشة بسلاسة
+                            // سكرول تلقائي سلس ينزل مع الكتابة أول بأول
                             container.scrollTop = container.scrollHeight;
-                            setTimeout(typeChar, 35); // سرعة كتابة سريعة ومريحة
+                            setTimeout(typeChar, 25); // سرعة كتابة سريعة ومريحة
                         } else {
-                            // انتهت الرسالة الحالية، الانتقال للرسالة التالية بعد فاصل زمني قصير
                             currentMessageIndex++;
-                            setTimeout(typeMessage, 600);
+                            setTimeout(typeMessage, 400); // فاصل قصير بين كل رسالة والثانية
                         }
                     }
                     typeChar();
