@@ -146,7 +146,6 @@
         .messages-scroll-container::-webkit-scrollbar { width: 4px; }
         .messages-scroll-container::-webkit-scrollbar-thumb { background: rgba(255, 182, 193, 0.3); border-radius: 10px; }
 
-        /* إطار ليد رومانسي متحرك هادئ يلف حوالين كل كارت */
         .love-card {
             position: relative;
             background: rgba(35, 20, 31, 0.9);
@@ -214,6 +213,7 @@
 
     <canvas id="fireworksCanvas"></canvas>
 
+    <!-- الصفحة الأولى (كلام إنجليزي) -->
     <div id="section1" class="section active">
         <div class="top-header-title">My Love 💓</div>
         <div></div>
@@ -223,6 +223,7 @@
         <div class="bottom-signature">My Love My Heart My All ❤️❤️</div>
     </div>
 
+    <!-- الصفحة التانية (كلام إنجليزي + الباسورد) -->
     <div id="section2" class="section">
         <div></div>
         <div class="content-box">
@@ -243,6 +244,7 @@
         <div class="bottom-signature">My Love My Heart My All ❤️❤️</div>
     </div>
 
+    <!-- الصفحة التالتة (المفاجأة والكروت اللي فيها رسايلك العربي) -->
     <div id="section3" class="section-surprise">
         <div class="top-header-title" style="position: relative; top: 0; margin-bottom: 10px;">Our Eternal Story 💍</div>
         
@@ -309,7 +311,8 @@
             }, 1000);
         }
 
-        const text1 = "I Love Yoy ❤️ 🫂";
+        // الكلام الإنجليزي في الصفحة الأولى
+        const text1 = "I Love You ❤️ 🫂";
         let i1 = 0;
 
         function startFirstScene() {
@@ -324,7 +327,8 @@
             }
         }
 
-        const text2 = "إلي نور عيني وروح فؤادي 🥺❤️";
+        // الكلام الإنجليزي في الصفحة التانية
+        const text2 = "You are my everything ✨ My forever love ❤️";
         let i2 = 0;
 
         function startSecondScene() {
@@ -396,6 +400,7 @@
             setInterval(updateTimer, 1000);
             updateTimer();
 
+            // رسايلك العربي جوه الكروت
             const messages = [
                 "بحبك قد كل لحظه بينا وقد كل لحظه عشناها مع بعض ❤️🫂",
                 "بحبك قد كل حكايه جمعتنا وكل رساله بعتناها لبعض ❤️🫂",
