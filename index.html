@@ -14,7 +14,7 @@
             background: radial-gradient(circle at center, #2e1d2a 0%, #1f141d 50%, #120b10 100%);
             font-family: 'Cairo', sans-serif;
             display: flex; flex-direction: column; justify-content: space-between; align-items: center;
-            position: fixed; padding: 20px;
+            position: fixed; padding: 25px 20px;
             transition: opacity 1.5s ease-in-out;
         }
         .fade-out { opacity: 0 !important; }
@@ -39,138 +39,276 @@
         canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2; pointer-events: none; }
 
         .top-header-title {
-            position: absolute; top: 20px; z-index: 10;
-            font-family: 'Cinzel', serif; font-size: clamp(1.2rem, 3.5vw, 1.5rem);
-            color: #ffb6c1; letter-spacing: 3px; font-weight: 700;
+            position: absolute; top: 35px; z-index: 10;
+            font-family: 'Cinzel', serif; font-size: clamp(1.3rem, 4vw, 1.7rem);
+            color: #ffb6c1; letter-spacing: 4px; font-weight: 700;
             text-shadow: 0 0 15px rgba(255, 182, 193, 0.6);
             opacity: 0; animation: fadeInHeader 1.5s ease forwards 0.5s;
         }
         @keyframes fadeInHeader { to { opacity: 1; } }
 
-        /* عداد الحب الثابت في أعلى الصفحة بعد الدخول */
-        .love-counter-bar {
-            position: absolute; top: 15px; width: 92%; max-width: 500px;
-            background: rgba(40, 25, 36, 0.85); backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 182, 193, 0.3); border-radius: 15px;
-            padding: 8px 10px; display: flex; justify-content: space-around; align-items: center;
-            z-index: 20; box-shadow: 0 5px 20px rgba(0,0,0,0.4);
-            opacity: 0; transform: translateY(-20px); transition: all 1s ease;
-            pointer-events: none;
-        }
-        .love-counter-bar.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
-        .counter-box { text-align: center; }
-        .counter-num { font-family: 'Cinzel', serif; font-size: 1.1rem; color: #ffd700; font-weight: 700; text-shadow: 0 0 10px rgba(255,215,0,0.5); }
-        .counter-lbl { font-size: 0.7rem; color: #ffb6c1; letter-spacing: 1px; }
-
         /* المحتوى الرئيسي */
         .content-box {
             display: flex; flex-direction: column; align-items: center; justify-content: center;
-            text-align: center; gap: 20px; width: 100%; max-width: 600px; margin: auto;
-            z-index: 10; height: 100%;
+            text-align: center; gap: 25px; width: 100%; max-width: 600px; margin: auto;
+            z-index: 10;
         }
 
         .romantic-text {
-            font-family: 'Playfair Display', serif; font-style: italic;
-            font-size: clamp(1.3rem, 3.5vw, 2rem); color: #ffb6c1;
-            line-height: 1.5; letter-spacing: 0.5px;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: clamp(1.4rem, 3.8vw, 2.2rem);
+            color: #ffb6c1;
+            line-height: 1.6;
+            letter-spacing: 0.5px;
             text-shadow: 0 0 15px rgba(255, 182, 193, 0.6);
-            min-height: 120px; display: flex; align-items: center; justify-content: center;
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             padding: 0 10px;
         }
 
         /* صندوق إدخال الباسورد */
         .password-container {
-            display: flex; flex-direction: column; align-items: center; gap: 12px;
-            width: 100%; max-width: 320px; opacity: 0; transform: translateY(20px);
-            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); pointer-events: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            width: 100%;
+            max-width: 320px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+            pointer-events: none;
         }
-        .password-container.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
+
+        .password-container.show {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
         .password-input {
-            width: 100%; padding: 13px 20px; background: rgba(40, 25, 36, 0.9);
-            border: 2px solid rgba(255, 182, 193, 0.4); border-radius: 50px;
-            color: #fff1f2; font-size: 1.1rem; text-align: center; outline: none;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4); transition: all 0.3s ease;
-            font-family: 'Cinzel', serif; letter-spacing: 3px;
+            width: 100%;
+            padding: 13px 20px;
+            background: rgba(40, 25, 36, 0.9);
+            border: 2px solid rgba(255, 182, 193, 0.4);
+            border-radius: 50px;
+            color: #fff1f2;
+            font-size: 1.1rem;
+            text-align: center;
+            outline: none;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 3px;
         }
-        .password-input:focus { border-color: #ffb6c1; box-shadow: 0 0 20px rgba(255, 182, 193, 0.6); }
+
+        .password-input:focus {
+            border-color: #ffb6c1;
+            box-shadow: 0 0 20px rgba(255, 182, 193, 0.6);
+        }
 
         .surprise-btn-wrapper {
-            position: relative; padding: 2.5px; border-radius: 26px; overflow: hidden;
-            width: 100%; cursor: pointer; box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            position: relative;
+            padding: 2.5px;
+            border-radius: 26px;
+            overflow: hidden;
+            width: 100%;
+            cursor: pointer;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
             transition: transform 0.2s ease;
         }
+
         .surprise-btn-wrapper:active { transform: scale(0.97); }
+
         .surprise-btn-wrapper::before {
-            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
             background: conic-gradient(from 0deg, transparent, rgba(255, 182, 193, 0.5), #ff758c, #ff7eb3, transparent 65%);
             animation: rotateGlow 4.5s linear infinite;
         }
-        @keyframes rotateGlow { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        .surprise-btn-content {
-            position: relative; background: rgba(40, 25, 36, 0.95); backdrop-filter: blur(20px);
-            padding: 15px 20px; border-radius: 24px; z-index: 2; text-align: center;
+
+        @keyframes rotateGlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
+
+        .surprise-btn-content {
+            position: relative;
+            background: rgba(40, 25, 36, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 15px 20px;
+            border-radius: 24px;
+            z-index: 2;
+            text-align: center;
+        }
+
         .surprise-btn-content span {
-            font-family: 'Cinzel', serif; font-size: clamp(0.95rem, 3.2vw, 1.1rem);
-            color: #fff1f2; font-weight: 700; letter-spacing: 2px;
+            font-family: 'Cinzel', serif;
+            font-size: clamp(0.95rem, 3.2vw, 1.1rem);
+            color: #fff1f2;
+            font-weight: 700;
+            letter-spacing: 2px;
             text-shadow: 0 0 12px rgba(255, 182, 193, 0.5);
         }
 
-        .error-msg { color: #ff6b81; font-size: 0.9rem; opacity: 0; transition: opacity 0.3s ease; }
+        .error-msg {
+            color: #ff6b81;
+            font-size: 0.9rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
         .error-msg.show { opacity: 1; }
 
-        /* حاوية رسائل الشات ذات الإطار الـ LED المتوهج والاسكرول التلقائي */
-        .chat-container {
-            display: none; flex-direction: column; gap: 15px; width: 100%; max-width: 480px;
-            height: 65vh; overflow-y: auto; padding: 15px; margin-top: 50px;
-            scroll-behavior: smooth; z-index: 15; opacity: 0; transition: opacity 1s ease;
-        }
-        .chat-container.show { display: flex; opacity: 1; }
-        .chat-container::-webkit-scrollbar { width: 5px; }
-        .chat-container::-webkit-scrollbar-thumb { background: rgba(255, 182, 193, 0.4); border-radius: 10px; }
-
-        /* ليد رومانسي منفصل لكل رسالة */
-        .led-message-wrapper {
-            position: relative; padding: 2.5px; border-radius: 20px; overflow: hidden;
-            width: 100%; box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-            animation: fadeInMsg 0.8s ease forwards; opacity: 0; transform: translateY(15px);
-        }
-        @keyframes fadeInMsg { to { opacity: 1; transform: translateY(0); } }
-        .led-message-wrapper::before {
-            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-            background: conic-gradient(from 0deg, transparent, rgba(255, 182, 193, 0.4), #ff758c, #ff7eb3, transparent 65%);
-            animation: rotateGlow 5s linear infinite;
-        }
-        .led-message-content {
-            position: relative; background: rgba(35, 20, 31, 0.95); backdrop-filter: blur(15px);
-            padding: 15px 20px; border-radius: 18px; z-index: 2; text-align: right;
-            font-size: 0.95rem; color: #fff1f2; line-height: 1.6;
-            font-family: 'Cairo', sans-serif;
-        }
-        .led-message-content span.highlight-m {
-            color: #ffb6c1; font-weight: 700; font-family: 'Cinzel', serif;
-            text-shadow: 0 0 10px rgba(255, 182, 193, 0.7);
-        }
-
         .bottom-signature {
-            font-family: 'Cinzel', serif; font-size: clamp(0.95rem, 3vw, 1.15rem);
-            color: #ffd700; letter-spacing: 3px; font-weight: 700;
-            text-shadow: 0 0 15px rgba(255, 215, 0, 0.5); z-index: 10; padding-bottom: 10px;
+            font-family: 'Cinzel', serif;
+            font-size: clamp(0.95rem, 3vw, 1.15rem);
+            color: #ffd700;
+            letter-spacing: 3px;
+            font-weight: 700;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+            z-index: 10;
+            padding-bottom: 10px;
             animation: pulseSignature 3s ease-in-out infinite alternate;
         }
-        @keyframes pulseSignature { 0% { transform: scale(1); opacity: 0.85; } 100% { transform: scale(1.03); opacity: 1; } }
 
-        .section {
-            display: none; width: 100%; height: 100%; flex-direction: column;
-            justify-content: space-between; align-items: center; position: absolute;
-            top: 0; left: 0; padding: 20px; opacity: 0; transition: opacity 1s ease-in-out;
+        @keyframes pulseSignature {
+            0% { transform: scale(1); opacity: 0.85; }
+            100% { transform: scale(1.03); opacity: 1; }
         }
-        .section.active { display: flex; opacity: 1; }
+
+        /* القسم الثالث: العداد والرسائل المتسلسلة مع السكرول التلقائي */
+        .section-surprise {
+            display: none;
+            width: 100%;
+            height: 100%;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            position: absolute;
+            top: 0; left: 0;
+            padding: 20px 15px;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            z-index: 10;
+        }
+        .section-surprise.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        /* تصميم العداد الثابت */
+        .counter-box {
+            background: rgba(40, 25, 36, 0.85);
+            backdrop-filter: blur(15px);
+            border: 1.5px solid rgba(255, 182, 193, 0.3);
+            border-radius: 20px;
+            padding: 12px 15px;
+            width: 100%;
+            max-width: 500px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            margin-bottom: 15px;
+            flex-shrink: 0;
+        }
+        .time-unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .time-value {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.1rem, 4vw, 1.4rem);
+            color: #ffd700;
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+        .time-label {
+            font-size: clamp(0.7rem, 2.5vw, 0.85rem);
+            color: #ffb6c1;
+            margin-top: 2px;
+        }
+        .time-separator {
+            font-size: 1.2rem;
+            color: rgba(255, 182, 193, 0.5);
+            font-weight: bold;
+        }
+
+        /* صندوق الرسائل المتحركة (سكرول تلقائي سلس) */
+        .messages-scroll-container {
+            width: 100%;
+            max-width: 550px;
+            flex-grow: 1;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            padding: 10px 5px 30px 5px;
+            scroll-behavior: smooth;
+        }
+        /* إخفاء شريط التمرير لشكل أرتب */
+        .messages-scroll-container::-webkit-scrollbar {
+            width: 4px;
+        }
+        .messages-scroll-container::-webkit-scrollbar-thumb {
+            background: rgba(255, 182, 193, 0.3);
+            border-radius: 10px;
+        }
+
+        .love-card {
+            background: rgba(35, 20, 31, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 182, 193, 0.25);
+            border-radius: 18px;
+            padding: 16px 20px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .love-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .love-card p {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: clamp(1rem, 3vw, 1.25rem);
+            color: #ffccd5;
+            line-height: 1.6;
+            text-shadow: 0 0 10px rgba(255, 182, 193, 0.4);
+        }
+
+        /* نظام إخفاء وإظهار الأقسام بسلاسة */
+        .section {
+            display: none;
+            width: 100%;
+            height: 100%;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            position: absolute;
+            top: 0; left: 0;
+            padding: 25px 20px;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .section.active {
+            display: flex;
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
 
-    <!-- تشغيل الموسيقى المستمرة -->
+    <!-- تشغيل الموسيقى المستمرة بدون انقطاع -->
     <audio id="bgMusic" preload="auto" loop>
         <source src="https://serv100.albumaty.com/2025/Albumaty.Com_mnwaat_mwsyki_rwmansyt_mnwaat.mp3" type="audio/mpeg">
     </audio>
@@ -184,14 +322,6 @@
 
     <canvas id="fireworksCanvas"></canvas>
 
-    <!-- عداد الحب الثابت أعلى الصفحة بعد الباسورد -->
-    <div class="love-counter-bar" id="loveCounterBar">
-        <div class="counter-box"><div class="counter-num" id="daysCount">0</div><div class="counter-lbl">يوم</div></div>
-        <div class="counter-box"><div class="counter-num" id="hoursCount">0</div><div class="counter-lbl">ساعة</div></div>
-        <div class="counter-box"><div class="counter-num" id="minsCount">0</div><div class="counter-lbl">دقيقة</div></div>
-        <div class="counter-box"><div class="counter-num" id="secsCount">0</div><div class="counter-lbl">ثانية</div></div>
-    </div>
-
     <!-- القسم الأول (الصفحة الأولى) -->
     <div id="section1" class="section active">
         <div class="top-header-title">My Love 💓</div>
@@ -202,34 +332,82 @@
         <div class="bottom-signature">My Love My Heart My All ❤️❤️</div>
     </div>
 
-    <!-- القسم الثاني (صفحة الباسورد ثم الشات والرسائل العشرة) -->
+    <!-- القسم الثاني (صفحة الباسورد) -->
     <div id="section2" class="section">
-        <div class="top-header-title" id="sec2Title" style="display:none;">Our Lovely Journey 💕</div>
-        <div class="content-box" style="justify-content: flex-start;">
-            <div class="romantic-text" id="typedText2" style="margin-top: 20px;"></div>
+        <div></div>
+        <div class="content-box">
+            <div class="romantic-text" id="typedText2"></div>
 
             <div class="password-container" id="passwordContainer">
                 <input type="password" id="passInput" class="password-input" placeholder="Enter Password..." autocomplete="off">
+                
                 <div class="surprise-btn-wrapper" id="submitBtn">
                     <div class="surprise-btn-content">
                         <span>Let's get to the surprise! ✨</span>
                     </div>
                 </div>
-                <div id="errorText" class="error-msg">كلمة المرور غير صحيحة، جربي تاني يا قلبي ❤️</div>
-            </div>
 
-            <!-- حاوية الـ 10 رسائل برومانسية وحرف M مع اسكرول تلقائي -->
-            <div class="chat-container" id="chatContainer">
-                <!-- سيتم حقن الرسائل هنا برمجياً -->
+                <div id="errorText" class="error-msg">كلمة المرور غير صحيحة، جربي تاني يا قلبي ❤️</div>
             </div>
         </div>
         <div class="bottom-signature">My Love My Heart My All ❤️❤️</div>
     </div>
 
+    <!-- القسم الثالث (العداد والـ 15 رسالة والسكرول التلقائي) -->
+    <div id="section3" class="section-surprise">
+        <div class="top-header-title" style="position: relative; top: 0; margin-bottom: 10px;">Our Eternal Story 💍</div>
+        
+        <!-- العداد الثابت -->
+        <div class="counter-box">
+            <div class="time-unit">
+                <span class="time-value" id="daysCount">00</span>
+                <span class="time-label">أيام</span>
+            </div>
+            <div class="time-separator">:</div>
+            <div class="time-unit">
+                <span class="time-value" id="hoursCount">00</span>
+                <span class="time-label">ساعات</span>
+            </div>
+            <div class="time-separator">:</div>
+            <div class="time-unit">
+                <span class="time-value" id="minsCount">00</span>
+                <span class="time-label">دقائق</span>
+            </div>
+            <div class="time-separator">:</div>
+            <div class="time-unit">
+                <span class="time-value" id="secsCount">00</span>
+                <span class="time-label">ثواني</span>
+            </div>
+        </div>
+
+        <!-- صندوق الرسائل مع السكرول التلقائي -->
+        <div class="messages-scroll-container" id="messagesContainer">
+            <div class="love-card"><p>كل ثانية بتمر وأنا معاكي بحس كأن الدنيا لسه مبتدأة، وحبك جوه قلبي بيزيد ويكبر مفيش حدود.</p></div>
+            <div class="love-card"><p>يا أجمل هدية ربنا رزقني بيها، ضحكتك دي هي النور اللي بينور لي كل طريق مظلم في حياتي.</p></div>
+            <div class="love-card"><p>أنتِ مش بس حبيبتي، أنتِ سكني، وأماني، وكل الأماكن الحلوة اللي بتمني أفضل فيها للأبد.</p></div>
+            <div class="love-card"><p>لو بيدي أجمع ستات العالم وأقولهم إنك الملكة بتاعتهم مكنتش تردد ولا لحظة، لأنك أروعهم وأطهرهم قلباً.</p></div>
+            <div class="love-card"><p>عيونك دول هما الوطن اللي بتطمن فيه، وكل هم بيختفي أول ما بتيجي في بالي أو أسمع صوتك.</p></div>
+            <div class="love-card"><p>بتمنالك السعادة اللي مفيهاش آخر، وبتمنى أفضل سبب لضحكتك وفرحتك لحد آخر عمرنا مع بعض.</p></div>
+            <div class="love-card"><p>بحبك بكل جزيئات روحي، وبكل تفصيلة صغيرة فيكي بتخليني أقع في حبك من أول وجديد كل يوم.</p></div>
+            <div class="love-card"><p>لما بكون معاكي بحس إن الزمن بيقف، وكل هموم الدنيا بتختفي وكأن مفيش غيرنا في الكون.</p></div>
+            <div class="love-card"><p>وجودك جنبي هو أكبر نعمة شكرت ربنا عليها كل يوم، وأتعهد إني أفضل سند وضهر وأمان ليكي.</p></div>
+            <div class="love-card"><p>الحياة معاكي طعمها تاني خالص، مليانة بالدفء والجمال والحب النقي اللي ملوش مثيل.</p></div>
+            <div class="love-card"><p>مهما عبرت بالكلام، مفيش جملة ممكن توصف إنتي غالية عندي قد إيه، إنتي عمري كله.</p></div>
+            <div class="love-card"><p>أنتِ الحكاية الحلوة اللي أتمنى أفضل أقراها وأعيش تفاصيلها طول عمري من غير ما تخلص.</p></div>
+            <div class="love-card"><p>كل أحلامي البسيطة والكبيرة مرتبطة بيكي، وكل أمنياتي إننا نكبر سوا ونحقق كل اللي بنحلم بيه.</p></div>
+            <div class="love-card"><p>أنتِ إشراقة الشموس في أيامي البرد، والنسيم الهادي اللي بيرد فيا الروح كل ما أتعب.</p></div>
+            <div class="love-card"><p>أحبك اليوم وكل يوم، وإلى أبد الآبدين.. أنتِ حبي الوحيد ومفتاح قلبي للأبد ❤️💍</p></div>
+        </div>
+    </div>
+
     <script>
+        // إعدادات الموسيقى
         const music = document.getElementById('bgMusic');
         music.volume = 0.5;
-        function playAudio() { music.play().catch(() => {}); }
+        
+        function playAudio() {
+            music.play().catch(() => {});
+        }
 
         window.addEventListener('DOMContentLoaded', () => {
             playAudio();
@@ -237,9 +415,11 @@
             startFirstScene();
         });
 
+        // دالة الانتقال السلس بين الأقسام
         function switchSection(fromId, toId, callback) {
             const current = document.getElementById(fromId);
             const next = document.getElementById(toId);
+            
             current.classList.add('fade-out');
             setTimeout(() => {
                 current.classList.remove('active', 'fade-out');
@@ -248,8 +428,10 @@
             }, 1000);
         }
 
+        // المشهد الأول: كتابة الجملة الأولى ثم الانتقال التلقائي
         const text1 = "To my beloved, the light of my eyes, the beat of my heart, and the soul of my heart...";
         let i1 = 0;
+
         function startFirstScene() {
             if (i1 < text1.length) {
                 document.getElementById('typedText1').innerHTML += text1.charAt(i1);
@@ -262,8 +444,10 @@
             }
         }
 
+        // المشهد الثاني: كتابة الجملة الثانية وإظهار حقل الباسورد
         const text2 = "I love you as it was in every story that brought us together";
         let i2 = 0;
+
         function startSecondScene() {
             function typeWriter2() {
                 if (i2 < text2.length) {
@@ -279,39 +463,7 @@
             typeWriter2();
         }
 
-        // دالة تحديث عداد الحب بدقة من 15 مارس 2024
-        function updateLoveCounter() {
-            const startDate = new Date('2024-03-15T00:00:00');
-            const now = new Date();
-            const diff = now - startDate;
-
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const secs = Math.floor((diff % (1000 * 60)) / 1000);
-
-            document.getElementById('daysCount').innerText = days;
-            document.getElementById('hoursCount').innerText = hours;
-            document.getElementById('minsCount').innerText = mins;
-            document.getElementById('secsCount').innerText = secs;
-        }
-        setInterval(updateLoveCounter, 1000);
-
-        // قائمة الـ 10 رسائل الرومانسية وكل واحدة تحتوي على حرف M
-        const romanticMessages = [
-            "من اول يوم عرفتك فيه يا <span class='highlight-m'>M</span>، وعالمي بقى أجمل بكتير.",
-            "كل نبضة في قلبي بتنطق اسمك يا أجمل <span class='highlight-m'>M</span> دخلت حياتي.",
-            "وجودك جنبي هو السعادة الحقيقية والراحة اللي دايماً بتمناها يا <span class='highlight-m'>M</span>.",
-            "ضحكتك بتنور لي كل ضلمة في طريقي، ربنا ما يحرمني من وجودك يا <span class='highlight-m'>M</span>.",
-            "أنتِ الحكاية الحلوة اللي بدأت في 15 مارس 2024 ومش تنتهي أبداً يا <span class='highlight-m'>M</span>.",
-            "مهما مر الوقت، حبي ليك بيزيد كل ثانية وكل دقيقة يا أغلى <span class='highlight-m'>M</span>.",
-            "بحس بالامان والاطمئنان وأنا معاك، يا أحلى هدية ربنا رزقني بيها يا <span class='highlight-m'>M</span>.",
-            "أنتِ مش بس حب حياتي، أنتِ روحي وعقلي وكل دنيتي يا <span class='highlight-m'>M</span>.",
-            "كل أحلامي المستقبلية ببنيها وأنتِ معايا، يا أجمل شركاء العمر يا <span class='highlight-m'>M</span>.",
-            "بحبك بعدد دقات قلبي وبكل حرف اتكتب عشانك يا أغلى اسم في قلبي يا <span class='highlight-m'>M</span> ❤️"
-        ];
-
-        // التحقق من كلمة المرور وعرض العداد والشات بالرسائل المتتالية والاسكرول التلقائي
+        // التحقق من كلمة المرور
         const passInput = document.getElementById('passInput');
         const submitBtn = document.getElementById('submitBtn');
         const errorText = document.getElementById('errorText');
@@ -323,46 +475,12 @@
                 errorText.classList.remove('show');
                 
                 setTimeout(() => {
-                    // إخفاء حقل الباسورد والنص القديم وإظهار العداد والشات
-                    document.getElementById('typedText2').style.display = 'none';
-                    document.getElementById('passwordContainer').style.display = 'none';
-                    document.getElementById('sec2Title').style.display = 'block';
-                    
-                    const counterBar = document.getElementById('loveCounterBar');
-                    counterBar.classList.add('show');
-                    updateLoveCounter();
-
-                    const chatContainer = document.getElementById('chatContainer');
-                    chatContainer.classList.add('show');
-
-                    // إدراج الرسائل تدريجياً مع الاسكرول التلقائي
-                    let msgIndex = 0;
-                    function loadNextMessage() {
-                        if (msgIndex < romanticMessages.length) {
-                            const wrapper = document.createElement('div');
-                            wrapper.className = 'led-message-wrapper';
-                            wrapper.style.animationDelay = `${msgIndex * 0.1}s`;
-                            
-                            const content = document.createElement('div');
-                            content.className = 'led-message-content';
-                            content.innerHTML = `✨ ${romanticMessages[msgIndex]}`;
-                            
-                            wrapper.appendChild(content);
-                            chatContainer.appendChild(wrapper);
-                            
-                            // اسكرول تلقائي لأسفل بسلاسة
-                            chatContainer.scrollTo({
-                                top: chatContainer.scrollHeight,
-                                behavior: 'smooth'
-                            });
-
-                            msgIndex++;
-                            setTimeout(loadNextMessage, 600); // ظهور رسالة كل 0.6 ثانية
-                        }
-                    }
-                    loadNextMessage();
-
-                }, 800);
+                    document.body.classList.add('fade-out');
+                    setTimeout(() => {
+                        document.body.classList.remove('fade-out');
+                        switchSection('section2', 'section3', startSurpriseScene);
+                    }, 1000);
+                }, 500);
             } else {
                 errorText.classList.add('show');
                 passInput.style.borderColor = "#ff6b81";
@@ -378,6 +496,48 @@
         passInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') checkPassword();
         });
+
+        // تشغيل الظهور المتسلسل للرسائل والسكرول التلقائي والعداد
+        function startSurpriseScene() {
+            // تشغيل العداد (تاريخ البداية: 15 مارس 2024 بناءً على كلمة المرور)
+            const startDate = new Date('2024-03-15T00:00:00');
+            
+            function updateTimer() {
+                const now = new Date();
+                const diff = now - startDate;
+                
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+                const minutes = Math.floor((diff / 1000 / 60) % 60);
+                const seconds = Math.floor((diff / 1000) % 60);
+
+                document.getElementById('daysCount').innerText = String(days).padStart(2, '0');
+                document.getElementById('hoursCount').innerText = String(hours).padStart(2, '0');
+                document.getElementById('minsCount').innerText = String(minutes).padStart(2, '0');
+                document.getElementById('secsCount').innerText = String(seconds).padStart(2, '0');
+            }
+            setInterval(updateTimer, 1000);
+            updateTimer();
+
+            // إظهار الرسائل تباعاً مع سكرول تلقائي سلس
+            const cards = document.querySelectorAll('.love-card');
+            const container = document.getElementById('messagesContainer');
+            let index = 0;
+
+            function showNextCard() {
+                if (index < cards.length) {
+                    cards[index].classList.add('visible');
+                    // سكرول تلقائي للبطاقة الجديدة بسلاسة
+                    container.scrollTo({
+                        top: cards[index].offsetTop - container.offsetTop,
+                        behavior: 'smooth'
+                    });
+                    index++;
+                    setTimeout(showNextCard, 1200); // إظهار رسالة جديدة كل 1.2 ثانية
+                }
+            }
+            setTimeout(showNextCard, 500);
+        }
 
         // رسومات الألعاب النارية في الخلفية
         const canvas = document.getElementById('fireworksCanvas');
@@ -434,7 +594,7 @@
             }
             draw() {
                 ctx.beginPath();
-                ctx.moveTo(this.coordinates[this.coordinates.length - 1][0], this.coordinates.length - 1][1]);
+                ctx.moveTo(this.coordinates[this.coordinates.length - 1][0], this.coordinates[this.coordinates.length - 1][1]);
                 ctx.lineTo(this.x, this.y);
                 ctx.strokeStyle = `hsla(${this.hue}, 90%, ${this.brightness}%, ${this.alpha})`;
                 ctx.stroke();
