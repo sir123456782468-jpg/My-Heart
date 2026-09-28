@@ -285,12 +285,21 @@
         music.volume = 0.5;
         
         function playAudio() {
+            music.currentTime = 2; // تبدأ من الثانية الثانية
             music.play().catch(() => {});
         }
 
+        // إعادة تشغيل الأغنية من الثانية 2 لو خلصت (احتياطاً بجانب الـ loop)
+        music.addEventListener('ended', () => {
+            music.currentTime = 2;
+            music.play();
+        });
+
         window.addEventListener('DOMContentLoaded', () => {
             playAudio();
+            // لضمان التشغيل الفوري حتى لو منع المتصفح التشغيل التلقائي قبل أي تفاعل
             document.body.addEventListener('click', playAudio, { once: true });
+            document.body.addEventListener('touchstart', playAudio, { once: true });
             startFirstScene();
         });
 
@@ -440,10 +449,10 @@
                             textEl.textContent += currentText.charAt(charIndex);
                             charIndex++;
                             container.scrollTop = container.scrollHeight;
-                            setTimeout(typeChar, 55); // تم تبطيء سرعة كتابة الحروف هنا
+                            setTimeout(typeChar, 55);
                         } else {
                             currentMessageIndex++;
-                            setTimeout(typeMessage, 900); // تم تبطيء الوقت الفاصل بين ظهور الكروت هنا
+                            setTimeout(typeMessage, 900);
                         }
                     }
                     typeChar();
