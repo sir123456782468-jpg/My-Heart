@@ -19,7 +19,6 @@
         }
         .fade-out { opacity: 0 !important; }
 
-        /* الديكورات والألعاب النارية */
         .romantic-decorations {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             z-index: 1; pointer-events: none; overflow: hidden;
@@ -47,7 +46,6 @@
         }
         @keyframes fadeInHeader { to { opacity: 1; } }
 
-        /* المحتوى الرئيسي */
         .content-box {
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             text-align: center; gap: 25px; width: 100%; max-width: 600px; margin: auto;
@@ -69,7 +67,6 @@
             padding: 0 10px;
         }
 
-        /* صندوق إدخال الباسورد */
         .password-container {
             display: flex;
             flex-direction: column;
@@ -181,7 +178,6 @@
             100% { transform: scale(1.03); opacity: 1; }
         }
 
-        /* القسم الثالث: العداد والرسائل المتسلسلة مع السكرول التلقائي */
         .section-surprise {
             display: none;
             width: 100%;
@@ -201,7 +197,6 @@
             opacity: 1;
         }
 
-        /* تصميم العداد الثابت */
         .counter-box {
             background: rgba(40, 25, 36, 0.85);
             backdrop-filter: blur(15px);
@@ -240,7 +235,6 @@
             font-weight: bold;
         }
 
-        /* صندوق الرسائل المتحركة (سكرول تلقائي سلس) */
         .messages-scroll-container {
             width: 100%;
             max-width: 550px;
@@ -282,7 +276,6 @@
             text-shadow: 0 0 10px rgba(255, 182, 193, 0.4);
         }
 
-        /* نظام إخفاء وإظهار الأقسام بسلاسة */
         .section {
             display: none;
             width: 100%;
@@ -304,7 +297,6 @@
 </head>
 <body>
 
-    <!-- تشغيل الموسيقى المستمرة بدون انقطاع -->
     <audio id="bgMusic" preload="auto" loop>
         <source src="https://serv100.albumaty.com/2025/Albumaty.Com_mnwaat_mwsyki_rwmansyt_mnwaat.mp3" type="audio/mpeg">
     </audio>
@@ -318,7 +310,6 @@
 
     <canvas id="fireworksCanvas"></canvas>
 
-    <!-- القسم الأول (الصفحة الأولى) -->
     <div id="section1" class="section active">
         <div class="top-header-title">My Love 💓</div>
         <div></div>
@@ -328,7 +319,6 @@
         <div class="bottom-signature">My Love My Heart My All ❤️❤️</div>
     </div>
 
-    <!-- القسم الثاني (صفحة الباسورد) -->
     <div id="section2" class="section">
         <div></div>
         <div class="content-box">
@@ -349,11 +339,9 @@
         <div class="bottom-signature">My Love My Heart My All ❤️❤️</div>
     </div>
 
-    <!-- القسم الثالث (العداد والـ 15 رسالة والسكرول التلقائي) -->
     <div id="section3" class="section-surprise">
         <div class="top-header-title" style="position: relative; top: 0; margin-bottom: 10px;">Our Eternal Story 💍</div>
         
-        <!-- العداد الثابت -->
         <div class="counter-box">
             <div class="time-unit">
                 <span class="time-value" id="daysCount">00</span>
@@ -376,7 +364,6 @@
             </div>
         </div>
 
-        <!-- صندوق الرسائل مع السكرول التلقائي -->
         <div class="messages-scroll-container" id="messagesContainer">
             <div class="love-card"><p class="card-text"></p></div>
             <div class="love-card"><p class="card-text"></p></div>
@@ -397,7 +384,6 @@
     </div>
 
     <script>
-        // إعدادات الموسيقى
         const music = document.getElementById('bgMusic');
         music.volume = 0.5;
         
@@ -411,7 +397,6 @@
             startFirstScene();
         });
 
-        // دالة الانتقال السلس بين الأقسام
         function switchSection(fromId, toId, callback) {
             const current = document.getElementById(fromId);
             const next = document.getElementById(toId);
@@ -424,7 +409,6 @@
             }, 1000);
         }
 
-        // المشهد الأول: كتابة الجملة الأولى ثم الانتقال التلقائي
         const text1 = "To my beloved, the light of my eyes, the beat of my heart, and the soul of my heart...";
         let i1 = 0;
 
@@ -440,7 +424,6 @@
             }
         }
 
-        // المشهد الثاني: كتابة الجملة الثانية وإظهار حقل الباسورد
         const text2 = "I love you as it was in every story that brought us together";
         let i2 = 0;
 
@@ -459,13 +442,12 @@
             typeWriter2();
         }
 
-        // التحقق من كلمة المرور (1592024 تاريخ البداية)
         const passInput = document.getElementById('passInput');
         const submitBtn = document.getElementById('submitBtn');
         const errorText = document.getElementById('errorText');
 
         function checkPassword() {
-            if (passInput.value === "1592024") {
+            if (passInput.value === "1532024") {
                 passInput.style.borderColor = "#2ecc71";
                 passInput.style.boxShadow = "0 0 25px rgba(46, 204, 113, 0.7)";
                 errorText.classList.remove('show');
@@ -493,10 +475,8 @@
             if (e.key === 'Enter') checkPassword();
         });
 
-        // تشغيل العداد وكتابة الرسائل حرف بحرف
         function startSurpriseScene() {
-            // تاريخ البداية المظبوط (15 سبتمبر 2024)
-            const startDate = new Date(2024, 8, 15, 0, 0, 0); // الشهر يبدأ من 0 (يعني 8 هو سبتمبر)
+            const startDate = new Date(2024, 8, 15, 0, 0, 0); // 15 سبتمبر 2024
             
             function updateTimer() {
                 const now = new Date();
@@ -516,7 +496,6 @@
             setInterval(updateTimer, 1000);
             updateTimer();
 
-            // الـ 15 رسالة رومانسية
             const messages = [
                 "كل ثانية بتمر وأنا معاكي بحس كأن الدنيا لسه مبتدأة، وحبك جوه قلبي بيزيد ويكبر مفيش حدود.",
                 "يا أجمل هدية ربنا رزقني بيها، ضحكتك دي هي النور اللي بينور لي كل طريق مظلم في حياتي.",
@@ -553,12 +532,11 @@
                         if (charIndex < currentText.length) {
                             textEl.textContent += currentText.charAt(charIndex);
                             charIndex++;
-                            // سكرول تلقائي سلس ينزل مع الكتابة أول بأول
                             container.scrollTop = container.scrollHeight;
-                            setTimeout(typeChar, 25); // سرعة كتابة سريعة ومريحة
+                            setTimeout(typeChar, 25);
                         } else {
                             currentMessageIndex++;
-                            setTimeout(typeMessage, 400); // فاصل قصير بين كل رسالة والثانية
+                            setTimeout(typeMessage, 400);
                         }
                     }
                     typeChar();
@@ -568,7 +546,6 @@
             setTimeout(typeMessage, 800);
         }
 
-        // رسومات الألعاب النارية في الخلفية
         const canvas = document.getElementById('fireworksCanvas');
         const ctx = canvas.getContext('2d');
         function initCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
