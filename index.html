@@ -252,7 +252,6 @@
             padding: 10px 5px 30px 5px;
             scroll-behavior: smooth;
         }
-        /* إخفاء شريط التمرير لشكل أرتب */
         .messages-scroll-container::-webkit-scrollbar {
             width: 4px;
         }
@@ -269,13 +268,10 @@
             padding: 16px 20px;
             text-align: center;
             box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            display: none; /* مخفية مبدئياً حتى يتم كتابتها */
         }
-        .love-card.visible {
-            opacity: 1;
-            transform: translateY(0);
+        .love-card.active-card {
+            display: block;
         }
         .love-card p {
             font-family: 'Playfair Display', serif;
@@ -382,21 +378,21 @@
 
         <!-- صندوق الرسائل مع السكرول التلقائي -->
         <div class="messages-scroll-container" id="messagesContainer">
-            <div class="love-card"><p>كل ثانية بتمر وأنا معاكي بحس كأن الدنيا لسه مبتدأة، وحبك جوه قلبي بيزيد ويكبر مفيش حدود.</p></div>
-            <div class="love-card"><p>يا أجمل هدية ربنا رزقني بيها، ضحكتك دي هي النور اللي بينور لي كل طريق مظلم في حياتي.</p></div>
-            <div class="love-card"><p>أنتِ مش بس حبيبتي، أنتِ سكني، وأماني، وكل الأماكن الحلوة اللي بتمني أفضل فيها للأبد.</p></div>
-            <div class="love-card"><p>لو بيدي أجمع ستات العالم وأقولهم إنك الملكة بتاعتهم مكنتش تردد ولا لحظة، لأنك أروعهم وأطهرهم قلباً.</p></div>
-            <div class="love-card"><p>عيونك دول هما الوطن اللي بتطمن فيه، وكل هم بيختفي أول ما بتيجي في بالي أو أسمع صوتك.</p></div>
-            <div class="love-card"><p>بتمنالك السعادة اللي مفيهاش آخر، وبتمنى أفضل سبب لضحكتك وفرحتك لحد آخر عمرنا مع بعض.</p></div>
-            <div class="love-card"><p>بحبك بكل جزيئات روحي، وبكل تفصيلة صغيرة فيكي بتخليني أقع في حبك من أول وجديد كل يوم.</p></div>
-            <div class="love-card"><p>لما بكون معاكي بحس إن الزمن بيقف، وكل هموم الدنيا بتختفي وكأن مفيش غيرنا في الكون.</p></div>
-            <div class="love-card"><p>وجودك جنبي هو أكبر نعمة شكرت ربنا عليها كل يوم، وأتعهد إني أفضل سند وضهر وأمان ليكي.</p></div>
-            <div class="love-card"><p>الحياة معاكي طعمها تاني خالص، مليانة بالدفء والجمال والحب النقي اللي ملوش مثيل.</p></div>
-            <div class="love-card"><p>مهما عبرت بالكلام، مفيش جملة ممكن توصف إنتي غالية عندي قد إيه، إنتي عمري كله.</p></div>
-            <div class="love-card"><p>أنتِ الحكاية الحلوة اللي أتمنى أفضل أقراها وأعيش تفاصيلها طول عمري من غير ما تخلص.</p></div>
-            <div class="love-card"><p>كل أحلامي البسيطة والكبيرة مرتبطة بيكي، وكل أمنياتي إننا نكبر سوا ونحقق كل اللي بنحلم بيه.</p></div>
-            <div class="love-card"><p>أنتِ إشراقة الشموس في أيامي البرد، والنسيم الهادي اللي بيرد فيا الروح كل ما أتعب.</p></div>
-            <div class="love-card"><p>أحبك اليوم وكل يوم، وإلى أبد الآبدين.. أنتِ حبي الوحيد ومفتاح قلبي للأبد ❤️💍</p></div>
+            <div class="love-card"><p class="card-text"></p></div>
+            <div class="love-card"><p class="card-text"></p></div>
+            <div class="love-card"><p class="card-text"></p></div>
+            <div class="love-card"><p class="card-text"></p></div>
+            <div class="love-card"><p class="card-text"></p></div>
+            <div class="love-card"><p class="card-text"></p></div>
+            <div class="love-card"><p class="card-text"></p></div>
+            <div class="love-card"><p class="card-text"></p></div>
+            <div class="love-card"><p class="card-text"></p></div>
+            <div class="love-card"><p class="card-text"></p></div>
+            <div class="love-card"><p class="card-text"></p></div>
+            <div class="love-card"><p class="card-text"></p></div>
+            <div class="love-card"><p class="card-text"></p></div>
+            <div class="love-card"><p class="card-text"></p></div>
+            <div class="love-card"><p class="card-text"></p></div>
         </div>
     </div>
 
@@ -497,18 +493,19 @@
             if (e.key === 'Enter') checkPassword();
         });
 
-        // تشغيل الظهور المتسلسل للرسائل والسكرول التلقائي والعداد
+        // تشغيل العداد وكتابة الرسائل حرف بحرف
         function startSurpriseScene() {
-            // تشغيل العداد (تاريخ البداية: 15 مارس 2024 بناءً على كلمة المرور)
-            const startDate = new Date('2024-03-15T00:00:00');
+            // العداد الدقيق (من 15 مارس 2024 - مع تعديل فروق التوقيت لضمان صحة الأيام)
+            const startDate = new Date(2024, 2, 15, 0, 0, 0); // الشهر 2 يعني مارس في جافاسكريبت
             
             function updateTimer() {
                 const now = new Date();
-                const diff = now - startDate;
+                let diff = now - startDate;
+                if (diff < 0) diff = 0;
                 
                 const days = Math.floor(diff / (1000 * 60 * 60 * 24));
                 const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-                const minutes = Math.floor((diff / 1000 / 60) % 60);
+                const minutes = Math.floor((diff / (1000 * 60)) % 60);
                 const seconds = Math.floor((diff / 1000) % 60);
 
                 document.getElementById('daysCount').innerText = String(days).padStart(2, '0');
@@ -519,24 +516,57 @@
             setInterval(updateTimer, 1000);
             updateTimer();
 
-            // إظهار الرسائل تباعاً مع سكرول تلقائي سلس
-            const cards = document.querySelectorAll('.love-card');
-            const container = document.getElementById('messagesContainer');
-            let index = 0;
+            // قائمة الـ 15 رسالة رومانسية
+            const messages = [
+                "كل ثانية بتمر وأنا معاكي بحس كأن الدنيا لسه مبتدأة، وحبك جوه قلبي بيزيد ويكبر مفيش حدود.",
+                "يا أجمل هدية ربنا رزقني بيها، ضحكتك دي هي النور اللي بينور لي كل طريق مظلم في حياتي.",
+                "أنتِ مش بس حبيبتي، أنتِ سكني، وأماني، وكل الأماكن الحلوة اللي بتمني أفضل فيها للأبد.",
+                "لو بيدي أجمع ستات العالم وأقولهم إنك الملكة بتاعتهم مكنتش تردد ولا لحظة، لأنك أروعهم وأطهرهم قلباً.",
+                "عيونك دول هما الوطن اللي بتطمن فيه، وكل هم بيختفي أول ما بتيجي في بالي أو أسمع صوتك.",
+                "بتمنالك السعادة اللي مفيهاش آخر، وبتمنى أفضل سبب لضحكتك وفرحتك لحد آخر عمرنا مع بعض.",
+                "بحبك بكل جزيئات روحي، وبكل تفصيلة صغيرة فيكي بتخليني أقع في حبك من أول وجديد كل يوم.",
+                "لما بكون معاكي بحس إن الزمن بيقف، وكل هموم الدنيا بتختفي وكأن مفيش غيرنا في الكون.",
+                "وجودك جنبي هو أكبر نعمة شكرت ربنا عليها كل يوم، وأتعهد إني أفضل سند وضهر وأمان ليكي.",
+                "الحياة معاكي طعمها تاني خالص، مليانة بالدفء والجمال والحب النقي اللي ملوش مثيل.",
+                "مهما عبرت بالكلام، مفيش جملة ممكن توصف إنتي غالية عندي قد إيه، إنتي عمري كله.",
+                "أنتِ الحكاية الحلوة اللي أتمنى أفضل أقراها وأعيش تفاصيلها طول عمري من غير ما تخلص.",
+                "كل أحلامي البسيطة والكبيرة مرتبطة بيكي، وكل أمنياتي إننا نكبر سوا ونحقق كل اللي بنحلم بيه.",
+                "أنتِ إشراقة الشموس في أيامي البرد، والنسيم الهادي اللي بيرد فيا الروح كل ما أتعب.",
+                "أحبك اليوم وكل يوم، وإلى أبد الآبدين.. أنتِ حبي الوحيد ومفتاح قلبي للأبد ❤️💍"
+            ];
 
-            function showNextCard() {
-                if (index < cards.length) {
-                    cards[index].classList.add('visible');
-                    // سكرول تلقائي للبطاقة الجديدة بسلاسة
-                    container.scrollTo({
-                        top: cards[index].offsetTop - container.offsetTop,
-                        behavior: 'smooth'
-                    });
-                    index++;
-                    setTimeout(showNextCard, 1200); // إظهار رسالة جديدة كل 1.2 ثانية
+            const cards = document.querySelectorAll('.love-card');
+            const textElements = document.querySelectorAll('.card-text');
+            const container = document.getElementById('messagesContainer');
+            let currentMessageIndex = 0;
+
+            function typeMessage() {
+                if (currentMessageIndex < messages.length) {
+                    const card = cards[currentMessageIndex];
+                    const textEl = textElements[currentMessageIndex];
+                    card.classList.add('active-card'); // إظهار الكارت
+                    
+                    let charIndex = 0;
+                    const currentText = messages[currentMessageIndex];
+                    
+                    function typeChar() {
+                        if (charIndex < currentText.length) {
+                            textEl.textContent += currentText.charAt(charIndex);
+                            charIndex++;
+                            // سكرول تلقائي مستمر مع ظهور الحروف لأسفل الشاشة بسلاسة
+                            container.scrollTop = container.scrollHeight;
+                            setTimeout(typeChar, 35); // سرعة كتابة سريعة ومريحة
+                        } else {
+                            // انتهت الرسالة الحالية، الانتقال للرسالة التالية بعد فاصل زمني قصير
+                            currentMessageIndex++;
+                            setTimeout(typeMessage, 600);
+                        }
+                    }
+                    typeChar();
                 }
             }
-            setTimeout(showNextCard, 500);
+            
+            setTimeout(typeMessage, 800);
         }
 
         // رسومات الألعاب النارية في الخلفية
