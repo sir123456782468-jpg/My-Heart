@@ -146,7 +146,7 @@
         .messages-scroll-container::-webkit-scrollbar { width: 4px; }
         .messages-scroll-container::-webkit-scrollbar-thumb { background: rgba(255, 182, 193, 0.3); border-radius: 10px; }
 
-        /* ليد رومانسي متحرك حوالين كارت الرسالة */
+        /* إطار ليد رومانسي متحرك هادئ يلف حوالين كل كارت */
         .love-card {
             position: relative;
             background: rgba(35, 20, 31, 0.9);
@@ -161,7 +161,6 @@
         }
         .love-card.active-card { display: block; }
 
-        /* إطار الليد المتحرك الهادئ */
         .love-card::before {
             content: '';
             position: absolute;
@@ -170,7 +169,6 @@
             animation: cardGlowRotate 6s linear infinite;
             z-index: -2;
         }
-        /* خلفية داخلية تغطي جو الكارت عشان يظهر الإطار الحركي من البراقع بس */
         .love-card::after {
             content: '';
             position: absolute;
@@ -271,7 +269,6 @@
         </div>
 
         <div class="messages-scroll-container" id="messagesContainer">
-            <div class="love-card"><p class="card-text"></p></div>
             <div class="love-card"><p class="card-text"></p></div>
             <div class="love-card"><p class="card-text"></p></div>
             <div class="love-card"><p class="card-text"></p></div>
