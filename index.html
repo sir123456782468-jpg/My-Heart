@@ -55,7 +55,7 @@
         .romantic-text {
             font-family: 'Playfair Display', serif;
             font-style: italic;
-            font-size: clamp(1.4rem, 3.8vw, 2.2rem);
+            font-size: clamp(1.2rem, 3.2vw, 1.8rem);
             color: #ffb6c1;
             line-height: 1.6;
             letter-spacing: 0.5px;
@@ -213,7 +213,7 @@
 
     <canvas id="fireworksCanvas"></canvas>
 
-    <!-- الصفحة الأولى (كلام إنجليزي) -->
+    <!-- الصفحة الأولى -->
     <div id="section1" class="section active">
         <div class="top-header-title">My Love 💓</div>
         <div></div>
@@ -223,7 +223,7 @@
         <div class="bottom-signature">My Love My Heart My All ❤️❤️</div>
     </div>
 
-    <!-- الصفحة التانية (كلام إنجليزي + الباسورد) -->
+    <!-- الصفحة التانية -->
     <div id="section2" class="section">
         <div></div>
         <div class="content-box">
@@ -244,7 +244,7 @@
         <div class="bottom-signature">My Love My Heart My All ❤️❤️</div>
     </div>
 
-    <!-- الصفحة التالتة (المفاجأة والكروت اللي فيها رسايلك العربي) -->
+    <!-- الصفحة التالتة والمفاجأة -->
     <div id="section3" class="section-surprise">
         <div class="top-header-title" style="position: relative; top: 0; margin-bottom: 10px;">Our Eternal Story 💍</div>
         
@@ -311,24 +311,24 @@
             }, 1000);
         }
 
-        // الكلام الإنجليزي في الصفحة الأولى
-        const text1 = "I Love You ❤️ 🫂";
+        // نص الصفحة الأولى
+        const text1 = "To my beloved, the light of my eyes, and the beat of my heart ❤️";
         let i1 = 0;
 
         function startFirstScene() {
             if (i1 < text1.length) {
                 document.getElementById('typedText1').innerHTML += text1.charAt(i1);
                 i1++;
-                setTimeout(startFirstScene, 80);
+                setTimeout(startFirstScene, 65);
             } else {
                 setTimeout(() => {
                     switchSection('section1', 'section2', startSecondScene);
-                }, 1500);
+                }, 2000);
             }
         }
 
-        // الكلام الإنجليزي في الصفحة التانية
-        const text2 = "You are my everything ✨ My forever love ❤️";
+        // نص الصفحة التانية
+        const text2 = "I love you, as it was, in every story that brought us together I love the love that brought us together I love you forever ✨";
         let i2 = 0;
 
         function startSecondScene() {
@@ -336,11 +336,11 @@
                 if (i2 < text2.length) {
                     document.getElementById('typedText2').innerHTML += text2.charAt(i2);
                     i2++;
-                    setTimeout(typeWriter2, 70);
+                    setTimeout(typeWriter2, 55);
                 } else {
                     setTimeout(() => {
                         document.getElementById('passwordContainer').classList.add('show');
-                    }, 400);
+                    }, 500);
                 }
             }
             typeWriter2();
@@ -400,8 +400,10 @@
             setInterval(updateTimer, 1000);
             updateTimer();
 
-            // رسايلك العربي جوه الكروت
+            // رسايل الكروت بالترتيب الجديد المطلوب
             const messages = [
+                "I Love Yooooooou ❤️ 😍",
+                "لحبيبتي ونور عيني 🥺❤️",
                 "بحبك قد كل لحظه بينا وقد كل لحظه عشناها مع بعض ❤️🫂",
                 "بحبك قد كل حكايه جمعتنا وكل رساله بعتناها لبعض ❤️🫂",
                 "اللي انا عامله ده عامله من كل قلبي قبل ما ادخل مرحله من اهم المراحل في حياتي وانتي جمبي ومعايا وداعم اساسي ليا ❤️🫂",
@@ -415,9 +417,18 @@
                 "لو اتطلب مني اقف قدام العالم كله علشان خاطر عيونك هقف وانا رافع راسي ❤️❤️❤️"
             ];
 
+            // إعادة إنشاء عناصر الكروت ديناميكياً لتتناسب مع عدد الرسائل الجديد (13 كارت)
+            const container = document.getElementById('messagesContainer');
+            container.innerHTML = '';
+            messages.forEach(() => {
+                const card = document.createElement('div');
+                card.className = 'love-card';
+                card.innerHTML = '<p class="card-text"></p>';
+                container.appendChild(card);
+            });
+
             const cards = document.querySelectorAll('.love-card');
             const textElements = document.querySelectorAll('.card-text');
-            const container = document.getElementById('messagesContainer');
             let currentMessageIndex = 0;
 
             function typeMessage() {
