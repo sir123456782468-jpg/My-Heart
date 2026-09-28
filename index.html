@@ -205,8 +205,8 @@
 </head>
 <body>
 
-    <audio id="bgMusic" preload="auto" loop>
-        <source src="https://serv100.albumaty.com/2025/Albumaty.Com_mnwaat_mwsyki_rwmansyt_mnwaat.mp3" type="audio/mpeg">
+    <audio id="bgMusic" preload="auto">
+        <source src="https://serv100.albumaty.com/songs_2020/Albumaty.Com_ahmd_gmal_bhbk.mp3" type="audio/mpeg">
     </audio>
 
     <div class="romantic-decorations">
@@ -283,23 +283,14 @@
     <script>
         const music = document.getElementById('bgMusic');
         music.volume = 0.5;
-        
-        function playAudio() {
-            music.currentTime = 2; // تبدأ من الثانية الثانية
-            music.play().catch(() => {});
-        }
 
-        // إعادة تشغيل الأغنية من الثانية 2 لو خلصت (احتياطاً بجانب الـ loop)
+        // إعادة تشغيل الأغنية من الثانية 35 لو خلصت
         music.addEventListener('ended', () => {
-            music.currentTime = 2;
+            music.currentTime = 35;
             music.play();
         });
 
         window.addEventListener('DOMContentLoaded', () => {
-            playAudio();
-            // لضمان التشغيل الفوري حتى لو منع المتصفح التشغيل التلقائي قبل أي تفاعل
-            document.body.addEventListener('click', playAudio, { once: true });
-            document.body.addEventListener('touchstart', playAudio, { once: true });
             startFirstScene();
         });
 
@@ -360,6 +351,10 @@
                 passInput.style.boxShadow = "0 0 25px rgba(46, 204, 113, 0.7)";
                 errorText.classList.remove('show');
                 
+                // تشغيل الأغنية من الثانية 35 فوراً عند صحة الباسورد وانتقال الصفحة التالتة
+                music.currentTime = 35;
+                music.play().catch(() => {});
+
                 setTimeout(() => {
                     document.body.classList.add('fade-out');
                     setTimeout(() => {
