@@ -205,8 +205,8 @@
 </head>
 <body>
 
-    <audio id="bgMusic" preload="auto">
-        <source src="https://serv100.albumaty.com/songs_2020/Albumaty.Com_ahmd_gmal_bhbk.mp3" type="audio/mpeg">
+    <audio id="bgMusic" preload="auto" loop>
+        <source src="https://serv100.albumaty.com/2025/Albumaty.Com_mnwaat_mwsyki_rwmansyt_mnwaat.mp3" type="audio/mpeg">
     </audio>
 
     <div class="romantic-decorations">
@@ -283,14 +283,21 @@
     <script>
         const music = document.getElementById('bgMusic');
         music.volume = 0.5;
+        
+        function playAudio() {
+            music.currentTime = 2;
+            music.play().catch(() => {});
+        }
 
-        // إعادة تشغيل الأغنية من الثانية 35 لو خلصت
         music.addEventListener('ended', () => {
-            music.currentTime = 35;
+            music.currentTime = 2;
             music.play();
         });
 
         window.addEventListener('DOMContentLoaded', () => {
+            playAudio();
+            document.body.addEventListener('click', playAudio, { once: true });
+            document.body.addEventListener('touchstart', playAudio, { once: true });
             startFirstScene();
         });
 
@@ -346,14 +353,23 @@
         const errorText = document.getElementById('errorText');
 
         function checkPassword() {
-            if (passInput.value === "1592024") {
+            if (passInput.value === "1532024") {
                 passInput.style.borderColor = "#2ecc71";
                 passInput.style.boxShadow = "0 0 25px rgba(46, 204, 113, 0.7)";
                 errorText.classList.remove('show');
                 
-                // تشغيل الأغنية من الثانية 35 فوراً عند صحة الباسورد وانتقال الصفحة التالتة
+                // تغيير الأغنية وتوجيهها للرابط الجديد وللثانية 35 عند نجاح الباسورد
+                music.pause();
+                music.src = "https://serv100.albumaty.com/songs_2020/Albumaty.Com_ahmd_gmal_bhbk.mp3";
                 music.currentTime = 35;
+                music.loop = true;
                 music.play().catch(() => {});
+
+                // تحديث حدث انتهاء الأغنية الجديدة لتكرارها من الثانية 35
+                music.onended = () => {
+                    music.currentTime = 35;
+                    music.play();
+                };
 
                 setTimeout(() => {
                     document.body.classList.add('fade-out');
