@@ -459,13 +459,13 @@
             typeWriter2();
         }
 
-        // التحقق من كلمة المرور
+        // التحقق من كلمة المرور (1592024 تاريخ البداية)
         const passInput = document.getElementById('passInput');
         const submitBtn = document.getElementById('submitBtn');
         const errorText = document.getElementById('errorText');
 
         function checkPassword() {
-            if (passInput.value === "1532024") {
+            if (passInput.value === "1592024") {
                 passInput.style.borderColor = "#2ecc71";
                 passInput.style.boxShadow = "0 0 25px rgba(46, 204, 113, 0.7)";
                 errorText.classList.remove('show');
@@ -495,8 +495,8 @@
 
         // تشغيل العداد وكتابة الرسائل حرف بحرف
         function startSurpriseScene() {
-            // تاريخ البداية (15 مارس 2024 - يمكنك تعديله لو التاريخ مختلف)
-            const startDate = new Date(2024, 2, 15, 0, 0, 0);
+            // تاريخ البداية المظبوط (15 سبتمبر 2024)
+            const startDate = new Date(2024, 8, 15, 0, 0, 0); // الشهر يبدأ من 0 (يعني 8 هو سبتمبر)
             
             function updateTimer() {
                 const now = new Date();
